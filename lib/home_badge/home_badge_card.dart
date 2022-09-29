@@ -46,6 +46,7 @@ Widget home_badge_card(String image){
                       ),
                       child: InkWell(
                         onTap: (){
+
                         },
                           child: const Text("Add To Cart",),
                         ),

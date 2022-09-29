@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/auth/login-file/bottom.dart';
 import 'package:untitled/discation/cubt/cubt.dart';
 import 'package:untitled/discation/cubt/state.dart';
+import 'package:untitled/discation/post.dart';
 import 'package:untitled/main_widgt/like_coment.dart';
 import '../main_widgt/post.dart';
 import '../main_widgt/search.dart';
@@ -94,7 +95,12 @@ class _DiscussionState extends State<Discussion> {
             floatingActionButton:FloatingActionButton(
               child: Icon(Icons.add),
               backgroundColor:Colors.green,
-              onPressed:(){} ,
+              onPressed:(){
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>const Discationpost(),
+                ));
+
+              } ,
             ),
             floatingActionButtonLocation:FloatingActionButtonLocation.endFloat ,
           );

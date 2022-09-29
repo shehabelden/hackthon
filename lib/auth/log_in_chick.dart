@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/auth/login-file/login.dart';
-import 'package:untitled/discation/discussion.dart';
 import '../home_badge/home_ui.dart';
-import '../profile/profile_ui.dart';
+import '../web_ui/auth/login-file/login.dart';
+import '../web_ui/home_badge_web/home web ui.dart';
 import 'cubt/cubt.dart';
 import 'cubt/state.dart';
 class login_check extends StatefulWidget {
@@ -23,10 +23,24 @@ class _login_checkState extends State<login_check> {
               auth_badge_cubt.get(c).token();
               final cubt=auth_badge_cubt.get(c);
               if(cubt.token_key==null){
-                return Login_ui();
+                return LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      if(constraints.widthConstraints().biggest.width<1536){
+                        return Login_ui();
+                      }else{
+                        return LoginUiWeb();
+                      }
+                    });
               }
               else{
-                return Home_Badge();
+                return LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      if(constraints.widthConstraints().biggest.width<1536){
+                        return Home_Badge();
+                      }else{
+                        return Home_Badge_web();
+                      }
+                    });
               }
             }
         )

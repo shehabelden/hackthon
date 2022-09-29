@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.0.15
   web_socket_channel:
   sqflite:
+  qr_code_scanner:
   path_provider:
   beamer: ^1.5.0
   image_picker: ^0.8.5+3

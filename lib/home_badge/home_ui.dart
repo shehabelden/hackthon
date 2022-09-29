@@ -3,7 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/home_badge/cubt/home_cubt.dart';
 import 'package:untitled/home_badge/cubt/state.dart';
 import 'package:untitled/home_badge/home_list_type.dart';
+import 'package:untitled/notication/notfiacation.dart';
+import 'package:untitled/qr_code_screen.dart';
+import '../cache_helper/cache_helper.dart';
+import '../discation/discussion.dart';
 import '../main_widgt/search.dart';
+import '../profile/profile_ui.dart';
 import 'home_badge_card.dart';
 class Home_Badge extends StatefulWidget {
    Home_Badge({Key? key}) : super(key: key);
@@ -55,7 +60,7 @@ class _Home_BadgeState extends State<Home_Badge> {
                          ),
                          borderRadius: BorderRadius.circular(15),
                        ),
-                       child: ImageIcon(
+                       child: const ImageIcon(
                         AssetImage("images/card_icon.png"),
                         color:Colors.white,
                         // color: Colors.green,
@@ -75,6 +80,7 @@ class _Home_BadgeState extends State<Home_Badge> {
                       listener:(c,i){},
                       builder: (context1,i) {
                         final cubt=home_badge_cubt.get(context1);
+                        // CacheHelper.get(key: "token_pref");
                         return  ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -140,43 +146,72 @@ class _Home_BadgeState extends State<Home_Badge> {
             ],
           ),
         floatingActionButton:FloatingActionButton(
-          child: Icon(Icons.home),
           backgroundColor:Colors.green,
           onPressed:(){} ,
+          child:const  Icon(Icons.home),
         ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar:BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         child:Container(
           height: 40,
           margin:const EdgeInsets.only(top: 20),
             alignment: Alignment.topCenter,
             child:Row(
-          children: const[
+          children: [
              Expanded(
                flex: 1,
-                 child:ImageIcon(
-                 AssetImage("images/tree_icon.png"),
+                 child:InkWell(
+                   onTap: (){
+                     Navigator.of(context).push(MaterialPageRoute(
+                         builder: (context) =>const Discussion(),
+                     ));
+                   },
+                   child: ImageIcon(
+                   AssetImage("images/tree_icon.png"),
                // color: Colors.green,
              ),
+                 ),
              ),
             Expanded(
                 flex: 1,
-                child:ImageIcon(
-                  AssetImage("images/scan_icon.png"),
+                child:InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ScanScreen(),
+                    ));
+                  },
+                  child: ImageIcon(
+                    AssetImage("images/scan_icon.png"),
+                  ),
                 )
             ),
             Expanded(
                 flex: 1,
-                child:ImageIcon(
-                AssetImage("images/notfication_image.png"),
-            )
+                child:InkWell(
+                  onTap: (){
+
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>const notfication(),
+                    ));
+                  },
+                  child: ImageIcon(
+                  AssetImage("images/notfication_image.png"),
+            ),
+                )
             ),
             Expanded(
                 flex: 1,
-                child:ImageIcon(
-                AssetImage("images/profile_icon1.png"),
+                child:InkWell(
+                  onTap:(){
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>const Profile_ui(),
+                    ));
+                  } ,
+                  child: ImageIcon(
+                  AssetImage("images/profile_icon1.png"),
             ),
+                ),
             )
           ],
             ),

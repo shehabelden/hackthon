@@ -41,20 +41,15 @@ Widget post(list_post,){
                        ),
                      ],
                    ),
-                   SizedBox(
-                     height: 10,
-                   ),
                      SizedBox(
                        width: double.infinity,
                        child: Column(
                          crossAxisAlignment:CrossAxisAlignment.start,
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                          children: [
                            Text('${list_post["title"]}',style:TextStyle(
                              fontSize: 18,
                              color:Colors.green,),
-                           ),
-                           SizedBox(
-                             height: 15,
                            ),
                            Padding(
                              padding: const EdgeInsets.only(left: 8.0),
@@ -64,9 +59,6 @@ Widget post(list_post,){
                                  fontSize: 15,
                                ),
                              ),
-                           ),
-                           SizedBox(
-                             height: 10,
                            ),
                          ]
                        ),
@@ -79,8 +71,8 @@ Widget post(list_post,){
            flex: 2,
            child:Image.network(
                "https://lavie.orangedigitalcenteregypt.com${list_post["imageUrl"]}",
-               // width:  double.infinity,
-               // fit:BoxFit.fill ,
+               width:  double.infinity,
+               fit:BoxFit.fill ,
            ),
          ),
        ],
